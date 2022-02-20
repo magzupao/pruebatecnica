@@ -40,3 +40,11 @@ TDD CalculatorTest
 TDD CalculatorControllerTest
 
 ![controller](controller.png "Controller")  
+
+API Add
+
+![add](apiadd.png "Add")  
+
+API Sub
+
+![sub](apisub.png "Sub")  
