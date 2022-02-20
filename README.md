@@ -48,3 +48,27 @@ API Add
 API Sub
 
 ![sub](apisub.png "Sub")  
+
+Creamos el contendor Docker
+
+- creamos el Dockerfile
+- compilamos el proyecto
+- creamos la imagen: docker build . -t prueba-tecnica
+- iniciamos el contenedor: docker run -p 8080:8080 --name=api-operator prueba-tecnica
+- ejecutamos via consola:
+una suma:
+```
+curl -X POST http://localhost:8080/api/operation \
+   -H 'Content-Type: application/json' \
+   -d '{"number1": "2.0","number2": "1.0","result": "0.0","operator": "+"}'
+
+   result=3.0
+```
+una resta:
+```
+curl -X POST http://localhost:8080/api/operation \
+   -H 'Content-Type: application/json' \
+   -d '{"number1": "2.0","number2": "1.0","result": "0.0","operator": "-"}'
+
+   result=1.0
+```
