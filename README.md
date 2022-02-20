@@ -26,10 +26,14 @@ Desarrollaremos los siguientes Objetos:
 
 TDD AdditionTest  
 
-![design](additionTest.png "Design")
+![add](additionTest.png "Additon")
 
 TDD SubtrationTest  
   
-![design](subtrationTest.png "Design")  
+![sub](subtrationTest.png "Subtraction")  
   
+
+TDD CalculatorTest  
+  
+![calculator](calculatorTest.png "Calculator")  
 
