@@ -7,6 +7,7 @@ package com.source.controller;
 
 import com.source.dto.DataDTO;
 import com.source.service.Calculator;
+import io.corp.calculator.TracerImpl;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +25,8 @@ import org.springframework.web.context.request.WebRequest;
 public class CalculatorController {
      
     static Logger logger = Logger.getLogger(CalculatorController.class.getName());
+
+    TracerImpl tracer = new TracerImpl();
  
     @RequestMapping(value = {"/api/operation"}, method = {RequestMethod.POST})
     public DataDTO operation(@RequestBody DataDTO dataDTO,
@@ -37,6 +40,7 @@ public class CalculatorController {
         dataDTO.setNumber2(dataDTO.getNumber2());
         dataDTO.setResult(calculator.getResult());
         logger.info(" *** CalculatorController result " + dataDTO.getResult());
+        tracer.trace(dataDTO.getResult());
         httpResponse.setStatus(HttpStatus.CREATED.value());
         return dataDTO;
     }    

@@ -72,3 +72,22 @@ curl -X POST http://localhost:8080/api/operation \
 
    result=1.0
 ```
+
+Agregamos la API tracer
+
+``` 
+...
+        <dependency>
+            <groupId>io.corp.calculator</groupId>
+            <artifactId>TracerImpl</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/tracer-1.0.0.jar</systemPath>
+        </dependency> 
+...
+
+```
+
+Tracer
+
+![tracer](tracer.png "Tracer")  
