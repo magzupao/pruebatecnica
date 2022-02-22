@@ -6,6 +6,7 @@
 package com.source.controller;
 
 import com.source.dto.DataDTO;
+import com.source.dto.OperationDTO;
 import com.source.service.AdditionTest;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
@@ -39,12 +40,12 @@ public class CalculatorControllerTest {
 
     @Test
     public void testAdd() {
-        DataDTO dataDTO = new DataDTO();
-        dataDTO.setNumber1(2.0);
-        dataDTO.setNumber2(3.0);
-        dataDTO.setOperator("+");
+        OperationDTO operationDTO = new OperationDTO();
+        operationDTO.setNumber1(2.0);
+        operationDTO.setNumber2(3.0);
+        operationDTO.setOperator("+");
 
-        dataDTO = calculatorController.operation(dataDTO, httpResponse, reques);
+        DataDTO dataDTO = calculatorController.operation(operationDTO, httpResponse, reques);
 
         Assertions.assertEquals(dataDTO.getResult(), 5.0);
         logger.info("CalculatorControllerTest - add - Ok");
@@ -52,12 +53,12 @@ public class CalculatorControllerTest {
 
     @Test
     public void testSub() {
-        DataDTO dataDTO = new DataDTO();
-        dataDTO.setNumber1(3.0);
-        dataDTO.setNumber2(2.0);
-        dataDTO.setOperator("-");
+        OperationDTO operationDTO = new OperationDTO();
+        operationDTO.setNumber1(3.0);
+        operationDTO.setNumber2(2.0);
+        operationDTO.setOperator("-");
 
-        dataDTO = calculatorController.operation(dataDTO, httpResponse, reques);
+        DataDTO dataDTO = calculatorController.operation(operationDTO, httpResponse, reques);
 
         Assertions.assertEquals(dataDTO.getResult(), 1.0);
         logger.info("CalculatorControllerTest - sub - Ok");

@@ -43,11 +43,24 @@ TDD CalculatorControllerTest
 
 API Add
 
-![add](apiadd.png "Add")  
+java -jar target/pruebatecnica.jar
+
+```
+curl -X GET http://localhost:8080/api/operation \
+   -H 'Content-Type: application/json' \
+   -d '{"number1": "2.0","number2": "1.0","operator": "+"}'
+```
 
 API Sub
 
-![sub](apisub.png "Sub")  
+java -jar target/pruebatecnica.jar 
+
+```
+curl -X GET http://localhost:8080/api/operation \
+   -H 'Content-Type: application/json' \
+   -d '{"number1": "2.0","number2": "1.0","operator": "-"}'
+```
+
 
 Creamos el contendor Docker
 
@@ -58,31 +71,34 @@ Creamos el contendor Docker
 - ejecutamos via consola:
 una suma:
 ```
-curl -X POST http://localhost:8080/api/operation \
+curl -X GET http://localhost:8080/api/operation \
    -H 'Content-Type: application/json' \
-   -d '{"number1": "2.0","number2": "1.0","result": "0.0","operator": "+"}'
+   -d '{"number1": "2.0","number2": "1.0","operator": "+"}'
 
    result=3.0
 ```
 una resta:
 ```
-curl -X POST http://localhost:8080/api/operation \
+curl -X GET http://localhost:8080/api/operation \
    -H 'Content-Type: application/json' \
-   -d '{"number1": "2.0","number2": "1.0","result": "0.0","operator": "-"}'
+   -d '{"number1": "2.0","number2": "1.0","operator": "+"}'
 
    result=1.0
 ```
 
 Agregamos la API tracer
+Cargamos el jar en el repositorio local
+```
+mvn install:install-file -Dfile=tracer-1.0.0.jar -DgroupId=io.corp.calculator -DartifactId=TracerImpl -Dversion=1.0.0 -Dpackaging=jar -DgeneratedPom=true
+```
 
+Configuramos en maven
 ``` 
 ...
         <dependency>
             <groupId>io.corp.calculator</groupId>
             <artifactId>TracerImpl</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/tracer-1.0.0.jar</systemPath>
         </dependency> 
 ...
 
