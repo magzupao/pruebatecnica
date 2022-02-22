@@ -31,24 +31,6 @@ public class CalculatorController {
 
     TracerImpl tracer = new TracerImpl();
 
-//    @RequestMapping(value = {"/api/operation"}, method = {RequestMethod.POST})
-//    public DataDTO operation(@RequestBody OperationDTO operationDTO,
-//                           HttpServletResponse httpResponse,
-//                           WebRequest request) {
-//        logger.info(" *** CalculatorController ");
-//        Calculator calculator = new Calculator(operationDTO.getNumber1(),
-//                operationDTO.getNumber2(),operationDTO.getOperator());
-//
-//        DataDTO dataDTO = new DataDTO();
-//        dataDTO.setNumber1(operationDTO.getNumber1());
-//        dataDTO.setNumber2(operationDTO.getNumber2());
-//        dataDTO.setOperator(operationDTO.getOperator());
-//        dataDTO.setResult(calculator.getResult());
-//        logger.info(" *** CalculatorController result " + dataDTO.getResult());
-//        tracer.trace(dataDTO.getResult());
-//        httpResponse.setStatus(HttpStatus.CREATED.value());
-//        return dataDTO;
-//    }    
     @RequestMapping(value = {"/api/operation"}, method = {RequestMethod.GET})
     public DataDTO operation(@RequestBody OperationDTO operationDTO,
             HttpServletResponse httpResponse,
@@ -61,8 +43,6 @@ public class CalculatorController {
             Calculator calculator = new Calculator(operationDTO.getNumber1(),
                     operationDTO.getNumber2(), operationDTO.getOperator());
 
-            dataDTO.setNumber1(operationDTO.getNumber1());
-            dataDTO.setNumber2(operationDTO.getNumber2());
             dataDTO.setOperator(operationDTO.getOperator());
             dataDTO.setResult(calculator.getResult());
             logger.info(" *** CalculatorController result " + dataDTO.getResult());
