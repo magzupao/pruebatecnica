@@ -121,8 +121,8 @@ curl -X GET http://localhost:8080/api/operation \
 
 Respuesta:
 ```
-{"
-   statusCode":404,
+{
+   "statusCode":404,
    "timestamp":"2022-02-22T08:27:10.632+00:00",
    "message":"Operation (x)  not supported! ",
    "description":"uri=/api/operation"
