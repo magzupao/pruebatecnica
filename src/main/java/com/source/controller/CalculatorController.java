@@ -7,6 +7,7 @@ package com.source.controller;
 
 import com.source.dto.DataDTO;
 import com.source.dto.OperationDTO;
+import com.source.exception.ResourceNotFoundException;
 import com.source.service.Calculator;
 import io.corp.calculator.TracerImpl;
 import java.util.logging.Logger;
@@ -56,17 +57,21 @@ public class CalculatorController {
         logger.info(" *** CalculatorController ");
         DataDTO dataDTO = new DataDTO();
 
-        Calculator calculator = new Calculator(operationDTO.getNumber1(),
-                operationDTO.getNumber2(), operationDTO.getOperator());
+        if(operationDTO.getOperator().equals("+") || operationDTO.getOperator().equals("-")){
+            Calculator calculator = new Calculator(operationDTO.getNumber1(),
+                    operationDTO.getNumber2(), operationDTO.getOperator());
 
-        dataDTO.setNumber1(operationDTO.getNumber1());
-        dataDTO.setNumber2(operationDTO.getNumber2());
-        dataDTO.setOperator(operationDTO.getOperator());
-        dataDTO.setResult(calculator.getResult());
-        logger.info(" *** CalculatorController result " + dataDTO.getResult());
-        tracer.trace(dataDTO.getResult());
-        httpResponse.setStatus(HttpStatus.CREATED.value());
-
+            dataDTO.setNumber1(operationDTO.getNumber1());
+            dataDTO.setNumber2(operationDTO.getNumber2());
+            dataDTO.setOperator(operationDTO.getOperator());
+            dataDTO.setResult(calculator.getResult());
+            logger.info(" *** CalculatorController result " + dataDTO.getResult());
+            tracer.trace(dataDTO.getResult());
+            httpResponse.setStatus(HttpStatus.CREATED.value());
+        }else{
+            throw new ResourceNotFoundException("Operation ("+ operationDTO.getOperator() + ")  not supported! ");
+        }
+        
         return dataDTO;
     }
 }

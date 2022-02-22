@@ -107,3 +107,24 @@ Configuramos en maven
 Tracer
 
 ![tracer](tracer.png "Tracer")  
+
+Se agrega un control de Errores, prueba:  
+mvn clean install  
+java -jar target/pruebatecnica.jar 
+
+```
+curl -X GET http://localhost:8080/api/operation \
+   -H 'Content-Type: application/json' \
+   -d '{"number1": "2.0","number2": "1.0","operator": "x"}'   
+
+```
+
+Respuesta:
+```
+{"
+   statusCode":404,
+   "timestamp":"2022-02-22T08:27:10.632+00:00",
+   "message":"Operation (x)  not supported! ",
+   "description":"uri=/api/operation"
+}
+```
